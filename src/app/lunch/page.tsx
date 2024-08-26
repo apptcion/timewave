@@ -8,6 +8,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
 import Image from 'next/image';
 
 import Menu from '../menu/menu'
+import Overlay from './overlay'
 import styles from '../../css/lunch.module.css';
 import LeftArrow from '../../../public/assets/imgs/toLeft.svg'
 import RightArrow from '../../../public/assets/imgs/toRight.svg'
@@ -333,6 +334,7 @@ let dinner = '- 타워함박스테이크\n\
 
   return (
     <div>
+      <Overlay></Overlay>
       <div
         className={styles.canvas}
         ref={canvasRef}

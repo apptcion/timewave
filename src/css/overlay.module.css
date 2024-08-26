@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.back{
+    position : absolute;
+    top : 0px;
+    left : 0px;
+    width : 100vw;
+    height : 100vh;
+    background-color: rgba(0,0,0,0.7);
+    z-index : 10;
+}
+
+.message{
+    font-family: 'Pretendard-Regular';
+    position : relative;
+    top : 320px;
+    left : 293px;
+    width : 1080px;
+    height : 108px;
+    font-size : 45px;
+    color : white;
+    display : flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ment{
+    margin : 0px;
+}
+
+.button{
+    font-family: 'Pretendard-Regular';
+    padding : 20px 40px;
+    overflow: hidden;
+    border-radius : 24px;
+    width : 440px;
+    height : 60px;
+    background-color: white;
+    position : relative;
+    top : 55vh;
+    margin : 0 auto;
+    justify-content: space-around;
+}
+
+.button:hover{
+    animation: focusInAnime;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+}
+@keyframes focusInAnime {
+    0%{
+        width : 440px;
+    }
+    100%{
+        width : 530px;
+    }
+}
+
+.btn_msg{
+    margin : 0px;
+    font-size : 48px;
+    height : 54px;
+    display : flex;
+    align-items: center;
+    width: fit-content;
+    position: relative;
+    top : -65px;
+    left : 83px;
+}
+
+.SchoolArrowLogo{
+    position : relative;
+    top : -119px;
+    left : 480px;
+}
