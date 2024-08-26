@@ -1,0 +1,54 @@
+.wrapper{
+    position : absolute;
+    top : calc(50vh - 212.5px);
+    left : 89.5vw;
+    width : 75px;
+    height : 425px;
+    display : flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.home{
+    width : 75px;
+    height : 75px;
+    border-radius: 100%;
+    background-color: #DFEDF8;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timetable{
+    width : 75px;
+    height : 75px;
+    border-radius: 100%;
+    background-color: #DFEDF8;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calender{
+    width : 75px;
+    height : 75px;
+    border-radius: 100%;
+    background-color: #DFEDF8;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mealPlan{
+    width : 75px;
+    height : 75px;
+    border-radius: 100%;
+    background-color: #DFEDF8;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected{
+    background-color: #87DAEF !important;
+}

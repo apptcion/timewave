@@ -1,0 +1,30 @@
+.canvas{
+    position : absolute;
+    top : -10vh;
+    width : 100vw;
+    height : 100vh;
+    overflow: hidden;
+}
+
+.leftArrow{
+    position : relative;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    top : calc(50vh - 75px);
+    left : calc(15vw - 75px);
+    width : 150px;
+    height : 150px;
+}
+
+.rightArrow{
+    position : relative;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    top : calc(50vh - 75px - 150px);
+    left : calc(85vw - 75px);
+    width : 150px;
+    height : 150px;
+}
+
