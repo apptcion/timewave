@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-import styles from '../../css/calender.module.css'
+import styles from '../../css/calendar.module.css'
 import Wave from './wave'
 import Menu from '../menu/menu'
 
@@ -131,7 +131,7 @@ function createDate(Start:Date, DomElement:HTMLDivElement){
 
 }
 
-export default function Calender(){
+export default function Calendar(){
 
     const [showDate, setShowDate] = useState(new Date())
 
@@ -199,7 +199,7 @@ export default function Calender(){
                     setShowDate(new Date(event.target.value));
                 }}></input>
             </div>
-            <div className={styles.calender} id='calender'>
+            <div className={styles.calendar} id='calendar'>
                 <div className={styles.days}>
                     <div className={`${styles.day} ${styles.sun}`}>일</div>
                     <div className={`${styles.day} ${styles.mon}`}>월</div>

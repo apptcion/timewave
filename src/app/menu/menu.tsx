@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import styles from '../../css/menu.module.css'
 import HomeLogo from '../../../public/assets/imgs/HomeLogo.svg'
-import CalenderLogo from '../../../public/assets/imgs/CalenderLogo.svg'
+import CalenderLogo from '../../../public/assets/imgs/CalendarLogo.svg'
 import TimetableLogo from '../../../public/assets/imgs/TimetableLogo.svg'
 import MealPlanLogo from '../../../public/assets/imgs/MealPlanLogo.svg'
 
