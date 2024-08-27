@@ -16,7 +16,76 @@
 
 .selectDate{
     position : absolute;
+    top : 1vh;
+    right : 0.5vw;
+    width : 216px;
+    height : 377px;
     z-index : 10;
+}
+
+.selectedDate{
+    font-family: 'Pretendard-Regular';
+    font-size : 33px;
+    font-weight : 1000;
+    color : #3F5C78;
+    width : 132px;
+    height : 39px;
+    position : absolute;
+    top : 13px;
+    left : 24px;
+    z-index : -1
+}
+
+.dateListWrap{
+    overflow : scroll;
+    height : 360px;
+    width : 185px;
+    background-color: #F9F9F9;
+    border-radius: 6px;
+    padding : 1px 8px;
+    display : none;
+}
+
+.dateListWrap::-webkit-scrollbar{
+    display : none;
+}
+
+.dateList{
+    font-family: 'Pretendard-Regular';
+    font-size : 33px;
+    font-weight: 1000;
+    color : #3F5C78;
+    width : 132px;
+    height : 39px;
+    margin : 12px;
+    cursor : pointer;
+    border-radius: 5px;
+    display : flex;
+    justify-content: center;
+}
+
+.dateList:hover{
+    background-color: #c1c1c1;
+}
+
+.checkbox{
+    display : none;
+}
+
+.checkbox:checked ~.dateListWrap{
+    display : block !important;
+}
+
+.checkbox:checked ~.label>.arrow{
+    transform: rotate(180deg);
+}
+
+.arrow{
+    position : absolute;
+    top : 22px;
+    right : 33px;
+    z-index : 11;
+    cursor : pointer;
 }
 
 .calendar{

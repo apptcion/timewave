@@ -1,7 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 import styles from '../../css/calendar.module.css'
+import bottomArrow from '../../../public/assets/imgs/bottomArrow.svg'
 import Wave from './wave'
 import Menu from '../menu/menu'
 
@@ -134,8 +136,7 @@ function createDate(Start:Date, DomElement:HTMLDivElement){
 export default function Calendar(){
 
     const [showDate, setShowDate] = useState(new Date())
-
-    useEffect(() => {
+    async function createWeeks(){
         console.log(showDate)
         const nowDate = new Date(showDate)
         nowDate.setDate(1)
@@ -189,16 +190,64 @@ export default function Calendar(){
         weeks.forEach((week) => {
             document.querySelector('#date').appendChild(week)
         })
+    }
+
+    async function createMonthSelector(){
+        let DateList = []
+        let now = new Date()
+        
+        for(let year = now.getFullYear(); year <= now.getFullYear() + 3; year++){
+            for(let month = 1; month <= 12; month++){
+                let date = document.createElement('div')
+                date.className = `${styles.dateList}`
+                const clickHandler = () => {
+                    let newDate = new Date()
+                    newDate.setFullYear(year)
+                    newDate.setMonth(month -1)
+                    setShowDate(newDate)
+                }
+
+                date.addEventListener('click' , clickHandler)
+                date.innerHTML = `${year}.`
+                if(month%10 == month) date.innerHTML += '0'
+                date.innerHTML += `${month}`
+                DateList.push(date)
+            }
+        }
+        DateList.forEach((date) => {
+            document.querySelector(`.${styles.dateListWrap}`).appendChild(date)
+        })
+    }
+    useEffect(() => {
+
+        setTimeout(()=>{
+            createWeeks();
+            createMonthSelector();
+            let result = ''
+            result += String(showDate.getFullYear()) + '.'
+            if(showDate.getMonth() +1 < 10){
+                result += '0'
+            }
+            result += String(showDate.getMonth() + 1)
+            document.querySelector(`.${styles.selectedDate}`).innerHTML = result;
+
+            let inputBox:HTMLInputElement = document.querySelector('#inputBox')
+            inputBox.checked = false;
+
+        },0)
+        
     }, [showDate])
 
     return (
         <div className={styles.wrap}>
             <div className={styles.selectDate}>
-                <input type='month'
-                 onChange={(event) => {
-                    setShowDate(new Date(event.target.value));
-                }}></input>
-            </div>
+                <input id="inputBox" className={styles.checkbox} type='checkbox' />
+                <label htmlFor='inputBox' className={styles.label}>
+                    <div className={styles.arrow}><Image src={bottomArrow} alt='' /></div>
+                </label>
+                <div className={styles.dateListWrap}></div>
+                <div className={styles.selectedDate}></div>
+             </div>
             <div className={styles.calendar} id='calendar'>
                 <div className={styles.days}>
                     <div className={`${styles.day} ${styles.sun}`}>일</div>

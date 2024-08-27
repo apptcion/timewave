@@ -1,7 +1,7 @@
 'use client'
 
 import * as THREE from 'three';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState} from 'react';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import {TextGeometry } from'three/examples/jsm/geometries/TextGeometry';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
@@ -12,6 +12,7 @@ import Overlay from './overlay'
 import styles from '../../css/lunch.module.css';
 import LeftArrow from '../../../public/assets/imgs/toLeft.svg'
 import RightArrow from '../../../public/assets/imgs/toRight.svg'
+import TempLoading from '../../../public/assets/imgs/Temploading.gif'
 // 커스텀 Rounded Box Geometry 함수 정의
 function createRoundedBoxGeometry(width, height, radius) {
   const shape = new THREE.Shape();
@@ -47,14 +48,14 @@ function Radian(angle){
   return angle * (Math.PI/180);
 }
 
-function create2dText(message, fontPath, size, position, scene){
+function create2dText(message, fontPath, size, position, scene, onLoadCallBack = () => {}){
 
   const fontLoader = new FontLoader();
   fontLoader.load(fontPath, (font) => {
     const textGeometry = new TextGeometry(message, {
       font: font,
       size: size,
-      height: 0,
+      depth: 0,
     });
 
     const textMaterial = new THREE.MeshBasicMaterial({ color: 'black' });
@@ -64,7 +65,7 @@ function create2dText(message, fontPath, size, position, scene){
     textMesh.position.z = position[2];
     
     scene.add(textMesh)
-
+    onLoadCallBack()
     return textMesh;
   })
   
@@ -72,7 +73,7 @@ function create2dText(message, fontPath, size, position, scene){
 
 export default function Lunch() {
   const canvasRef = useRef(null);
-
+  const [isLoading, setLoading] = useState(true)
   useEffect(() => {
 
     //////////////////////TEMP/////////////////////////
@@ -190,7 +191,10 @@ let dinner = '- 타워함박스테이크\n\
 
     //저녁 텍스트 추가
     create2dText('저녁', '/assets/fonts/Pretendard Medium_Regular.json', 0.2, [-1.2, 1.7, 0.1], DinnerSpace)
-    create2dText(dinner, '/assets/fonts/Pretendard Medium_Regular.json', 0.13, [-1.2, 1.3, 0.1], DinnerSpace)
+    create2dText(dinner, '/assets/fonts/Pretendard Medium_Regular.json', 0.13, [-1.2, 1.3, 0.1], DinnerSpace, () => {
+      setLoading(false)
+      console.log("로딩 완료")
+    })
 
     BoardSpace.add(DinnerSpace)
     Showing.push(DinnerSpace)
@@ -216,15 +220,6 @@ let dinner = '- 타워함박스테이크\n\
     let running = false;
     const animate = function () {
       requestAnimationFrame(animate);
-    
-      //BoardSpace.rotation.y += 0.01
-      //Objects.forEach((Space) => {
-        //Space.rotation.y -= 0.01
-      //})
-
-      // if(BoardSpace.rotation.y%120 && !running){
-      //   BoardSpace.rotation.y = 0;
-      // }
       if(!running){
         Showing[0].position.set(-7/2, 0, -0.5)
         Showing[1].position.set(0, -1, 1)
@@ -334,6 +329,7 @@ let dinner = '- 타워함박스테이크\n\
 
   return (
     <div>
+      {isLoading && <Image className={styles.loading} src={TempLoading} alt='' unoptimized/>}
       <Overlay></Overlay>
       <div
         className={styles.canvas}
