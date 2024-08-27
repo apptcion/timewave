@@ -1,3 +1,5 @@
+'use client'
+import { useEffect } from 'react'
 import Image from 'next/image'
 
 import styles from '../../css/overlay.module.css'
@@ -5,6 +7,13 @@ import SchoolLogo from '../../../public/assets/imgs/school.svg'
 import SchoolArrowLogo from '../../../public/assets/imgs/SchoolArrow.svg'
 
 export default function Overlay(){
+
+    useEffect(()=>{
+        document.querySelector(`.${styles.button}`).addEventListener('click', ()=>{
+            document.querySelector(`.${styles.back}`).setAttribute('style', 'display : none')
+        })
+    })
+
     return (
         <div className={styles.back}>
             <div className={styles.message}>

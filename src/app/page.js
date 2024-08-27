@@ -1,8 +1,8 @@
 import Main from './main/page'
-
+import Home from './home/page'
 
 export default function Home() {
   return (
-    <Main></Main>
+    <Home></Home>
   );
 }

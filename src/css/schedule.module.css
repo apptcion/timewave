@@ -1,0 +1,39 @@
+
+.main{
+  width: 70%;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-right: 15%;
+  border-collapse: collapse;
+  font-family: 'Pretendard-Regular';
+}
+
+.title{
+  font-size: 20px;
+  font-family: 'Pretendard-Regular';
+  font-weight: bold;
+  margin-left: 2%;
+}
+
+.thead {
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+  
+.sche_tr{
+  padding: 1em .5em;
+  vertical-align: middle;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+}
+
+.sche_th{
+  padding: 2%;
+  vertical-align: middle;
+  font-size: 25px;
+}
+  
+.sche_td {
+  background: #fff;
+}
