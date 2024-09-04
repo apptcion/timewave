@@ -6,7 +6,7 @@ export default function WAVE() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const XRef = useRef(0);
 
-    const [speed, setSpeed] = useState(2)
+    const [speed, setSpeed] = useState(1)
     const [height, setHeight] = useState(80)
     const [diff, setDiff] = useState(120)
 
