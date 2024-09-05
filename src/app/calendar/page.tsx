@@ -75,7 +75,7 @@ function createDate(Start:Date, DomElement:HTMLDivElement){
             DomElement.appendChild(date)
         }
     }else if(Start.getDate()+7  > lastDate(Start)){
-        console.log("Last, start : ", Start.getDate(), "to ", lastDate(Start), " months : ", Start.getMonth())
+        //console.log("Last, start : ", Start.getDate(), "to ", lastDate(Start), " months : ", Start.getMonth())
         for(let i = Start.getDate(); i <= lastDate(Start); i++){
             let tempDate = new Date(Start)
             tempDate.setDate(i);
@@ -94,7 +94,6 @@ function createDate(Start:Date, DomElement:HTMLDivElement){
         }
         let tempLength = DomElement.children.length;
         for(let i = 1; i <= 7 - (tempLength); i++){
-            console.log(i)
             let tempDate = new Date(Start)
             tempDate.setMonth(tempDate.getMonth() +1)
             tempDate.setDate(i);
@@ -137,7 +136,6 @@ export default function Calendar(){
 
     const [showDate, setShowDate] = useState(new Date())
     async function createWeeks(){
-        console.log(showDate)
         const nowDate = new Date(showDate)
         nowDate.setDate(1)
         let weeks = []
@@ -168,7 +166,6 @@ export default function Calendar(){
         weeks.push(firstWeek)
 
         for(var i = 2; i <= rows-1; i++ ){
-            console.log(i)
             let week = document.createElement('div')
             week.id = `${i}`
             week.className = `${styles.week}`
@@ -192,13 +189,20 @@ export default function Calendar(){
         })
     }
 
-    async function createMonthSelector(){
+    function createMonthSelector(){
         let DateList = []
         let now = new Date()
-        
+        console.log("Test")
+        try{
+            console.log(showDate)
+        document.querySelector(`.${styles.selected}`).classList.remove(`${styles.selected}`)
+        }catch(e){
+            
+        }
+
         for(let year = now.getFullYear(); year <= now.getFullYear() + 3; year++){
             for(let month = 1; month <= 12; month++){
-                let date = document.createElement('div')
+                let date = document.createElement('div');
                 date.className = `${styles.dateList}`
                 const clickHandler = () => {
                     let newDate = new Date()
@@ -207,10 +211,13 @@ export default function Calendar(){
                     setShowDate(newDate)
                 }
 
-                date.addEventListener('click' , clickHandler)
+                date.addEventListener('click' , clickHandler);
                 date.innerHTML = `${year}.`
                 if(month%10 == month) date.innerHTML += '0'
                 date.innerHTML += `${month}`
+                if(month == showDate.getMonth()+1 && year == showDate.getFullYear()){
+                    date.className += ` ${styles.selected}`
+                }
                 DateList.push(date)
             }
         }
@@ -220,9 +227,25 @@ export default function Calendar(){
     }
     useEffect(() => {
 
+        function scrollHandler (){
+            setTimeout(() => {
+                const nowSelect : HTMLOptionElement = document.querySelector(`.${styles.selected}`)
+                if (nowSelect) {
+                    document.querySelector(`.${styles.dateListWrap}`).scrollTo({
+                        top: nowSelect.offsetTop - 10
+                    });
+                }
+            }, 0)
+
+        }
+
+        document.querySelector(`.${styles.arrow}`).addEventListener('click', scrollHandler)
+
         setTimeout(()=>{
             createWeeks();
             createMonthSelector();
+
+            //display date
             let result = ''
             result += String(showDate.getFullYear()) + '.'
             if(showDate.getMonth() +1 < 10){
@@ -230,10 +253,10 @@ export default function Calendar(){
             }
             result += String(showDate.getMonth() + 1)
             document.querySelector(`.${styles.selectedDate}`).innerHTML = result;
-
+           
             let inputBox:HTMLInputElement = document.querySelector('#inputBox')
             inputBox.checked = false;
-
+            
         },0)
         
     }, [showDate])
