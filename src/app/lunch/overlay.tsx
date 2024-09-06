@@ -10,7 +10,8 @@ export default function Overlay(){
 
     useEffect(()=>{
         document.querySelector(`.${styles.button}`).addEventListener('click', ()=>{
-            document.querySelector(`.${styles.back}`).setAttribute('style', 'display : none')
+            // document.querySelector(`.${styles.back}`).setAttribute('style', 'display : none')
+            location.href='/search'
         })
     })
 

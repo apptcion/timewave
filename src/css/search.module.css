@@ -1,0 +1,149 @@
+.main{
+    width : 691px;
+    height : fit-content;
+    position : relative;
+    top : 162px;
+    margin : 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.imgWrap{
+    height : fit-content;
+}
+
+.Wrap{
+    margin-top : 100px;
+    margin-bottom : 100px;
+}
+
+.searchWrap{
+    width : 689px;
+    height : 52px;
+    display : flex;
+    flex-wrap: wrap;
+}
+
+.input{
+    width : 615px;
+    height : 42px;
+    border : solid 4px #91D0E5;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding : none;
+    font-size : 20px;
+    padding-left : 15px;
+}
+
+.input:focus{
+    outline: none;
+}
+
+.input::placeholder{
+    font-size : 20px;
+    color : #19738F;
+    position : relative;
+    left : 0px;
+    top : 2.5px;
+    font-family: "Inter", sans-serif;
+    font-size : 20px;
+}
+
+.searchBtn{
+    width : 45px;
+    height : 44px;
+    border : solid 4px #91D0E5;
+    border-left : none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list{
+    position : relative;
+    top : 40px;
+    width : 685px;
+    height : fit-content;
+    min-height: 100px;
+    border : solid 4px #8FD1E7;
+    border-radius: 14px;
+}
+
+.header{
+    height : 43px;
+    border-bottom : solid 4px #8FD1E7;
+    display : flex;
+    flex-wrap : wrap;
+}
+
+.locate{
+    width : 204px;
+    height : 100%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    color : #19738F;
+    font-family: "Inter", sans-serif;
+    font-size : 20px;
+    border-right : solid 2.5px #8FD1E7;
+}
+
+.schoolname{
+    width : 477px;
+    height : 100%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    color : #19738F;
+    font-family: "Inter", sans-serif;
+    font-size : 20px;
+    border-left : solid 2.5px #8FD1E7;
+
+}
+
+.body{
+    width : 685px;
+    background-color: rgba(135,218,239,0.05);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.tr{
+    width : 685px;
+    height : 48px;
+    border-bottom : solid 1px #8FD1E7;
+    display : flex;
+    flex-wrap : wrap;
+    cursor : pointer;
+}
+
+.tdLocate{
+    width : 204px;
+    height : 100%;
+    border-right : solid 2.5px #8FD1E7;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    color : #19738F;
+    font-family: "Inter", sans-serif;
+    font-size : 20px;
+    font-weight : 700;
+    
+}
+
+.tdName{
+    width : 477px;
+    height : 100%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    color : #19738F;
+    font-family: "Inter", sans-serif;
+    font-size : 20px;
+    border-left : solid 2.5px #8FD1E7;
+    font-weight : bold
+
+}

@@ -74,8 +74,14 @@ function create2dText(message, fontPath, size, position, scene, onLoadCallBack =
 export default function Lunch() {
   const canvasRef = useRef(null);
   const [isLoading, setLoading] = useState(true)
+  const [isNotEnroll, setEnroll] = useState(false)
   useEffect(() => {
 
+    if(!document.cookie.match(new RegExp(
+      "(?:^|; )" +"school".replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ))){
+      setEnroll(true)
+    }
     //////////////////////TEMP/////////////////////////
 let lunch = '-물/비빔반반냉면\n\
 - 후리카케주먹밥\n\
@@ -330,7 +336,7 @@ let dinner = '- 타워함박스테이크\n\
   return (
     <div>
       {isLoading && <Image className={styles.loading} src={TempLoading} alt='' unoptimized/>}
-      <Overlay></Overlay>
+      {isNotEnroll && <Overlay />}
       <div
         className={styles.canvas}
         ref={canvasRef}
