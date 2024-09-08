@@ -2,12 +2,12 @@
 import styles from '../../css/WAVE.module.css';
 import React, { useRef, useEffect, useState } from 'react';
 
-export default function WAVE() {
+export default function WAVE(props) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const XRef = useRef(0);
 
     const [speed, setSpeed] = useState(2)
-    const [height, setHeight] = useState(100)
+    const [height, setHeight] = useState(160)
     const [diff, setDiff] = useState(120)
 
     useEffect(() => {
@@ -75,11 +75,11 @@ export default function WAVE() {
         ctx.fillStyle = color;
         
         ctx.beginPath()
-        ctx.lineTo(0, window.innerHeight/2 + 240 + unique*30)
+        ctx.lineTo(0, window.innerHeight/props.height + 240 + unique*30)
     
         for (let i = window.innerWidth/((points-1)*2); i < window.innerWidth; i += window.innerWidth / (points-1)) {
             let index = (i- window.innerWidth/((points-1)*2))/(window.innerWidth/(points-1)) + 1
-            ctx.quadraticCurveTo(i , Math.sin(calcRadian(X + index*90 + unique*diff))*(height) +  window.innerHeight/2 + 300 , i + window.innerWidth/((points-1)*2),  (Math.sin(calcRadian(X + index*90 + unique*diff))*(height) + Math.sin(calcRadian(X + (index+ 1)*90  + unique*diff))*(height))/2 + window.innerHeight/2 + 300)
+            ctx.quadraticCurveTo(i , Math.sin(calcRadian(X + index*90 + unique*diff))*(height) +  window.innerHeight/props.height + 300 , i + window.innerWidth/((points-1)*2),  (Math.sin(calcRadian(X + index*90 + unique*diff))*(height) + Math.sin(calcRadian(X + (index+ 1)*90  + unique*diff))*(height))/2 + window.innerHeight/props.height + 300)
             
         }
         ctx.lineTo(window.innerWidth, window.innerHeight/2 )

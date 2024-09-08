@@ -9,9 +9,9 @@ export default function Schedule() {
     <div>
       <Neis></Neis>
       <div className={styles.main}>
-        <Wave></Wave>
+        <Wave height="2"></Wave>
       </div>
-      <Menu></Menu>
+      <Menu select="schedule"></Menu>
     </div>
   );
 }

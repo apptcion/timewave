@@ -71,19 +71,75 @@ function create2dText(message, fontPath, size, position, scene, onLoadCallBack =
   
 }
 
+function getCookie(name) {
+  console.log(name)
+  let cookies = document.cookie;
+  let parseCookie = {}
+  cookies.split(';').forEach((keyValue)=>{
+    let temp = keyValue.split('=');
+    parseCookie[temp[0].trim()] = temp[1]
+  })
+  console.log(parseCookie)
+
+  return parseCookie[name]
+}
+
+
 export default function Lunch() {
   const canvasRef = useRef(null);
   const [isLoading, setLoading] = useState(true)
   const [isNotEnroll, setEnroll] = useState(false)
-  useEffect(() => {
 
-    if(!document.cookie.match(new RegExp(
-      "(?:^|; )" +"school".replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    ))){
+  const [morning, setMorning] = useState('데이터가 없습니다.')
+  const [lunch, setLunch] = useState('데이터가 없습니다.')
+  const [dinner, setDinner] = useState('데이터가 없습니다.')
+
+  async function setMealInfo(){
+    if(!getCookie('SC_CODE')){
       setEnroll(true)
+    }else{
+      let SC_code = getCookie('SC_CODE')
+      let OFE_code = getCookie('OFE_CODE')
+
+      console.log(SC_code, OFE_code)
+      let date = new Date().toISOString().slice(0,10).replace(/-/g,"")
+      await fetch(
+        `https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&ATPT_OFCDC_SC_CODE=${OFE_code}&SD_SCHUL_CODE=${SC_code}&MLSV_YMD=${date}&KEY=${process.env.NEXT_PUBLIC_apiKEY}`
+      )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          console.error("HTTP Error:", response.status, response.statusText);
+          throw new Error("API 요청 실패");
+        }
+      })
+      .then((result) => {
+        return result.mealServiceDietInfo
+      })
+      .then((result) => {
+        return result[1].row[0]
+      })
+      .then((result) => {
+        let temp = ''
+        result.DDISH_NM.split('<br/>').forEach((data: string) => {
+          if(data.length > 16){
+            data = data.substring(0,15) + '\n' + data.substring(15)
+          }
+          temp += `- ${data}\n`
+        })
+        setLunch(temp)
+      })
+      .catch((error) => {
+        console.error("Fetch Error:", error);
+      });
     }
+  }
+  
+  useEffect(() => {
+    setMealInfo()
     //////////////////////TEMP/////////////////////////
-let lunch = '-물/비빔반반냉면\n\
+/*let lunch = '-물/비빔반반냉면\n\
 - 후리카케주먹밥\n\
 - 추가밥\n\
 - 소떡소떡꼬치\n\
@@ -112,7 +168,7 @@ let dinner = '- 타워함박스테이크\n\
 - 깍두기\n\
 - 수제딸기바나나스무디\n\
 - 비빔코너'
-
+*/
 
     const currentRef = canvasRef.current;
 
@@ -331,7 +387,7 @@ let dinner = '- 타워함박스테이크\n\
       currentRef.removeChild(renderer.domElement);
       window.removeEventListener('resize', resizeHandler)
     };
-  }, []);
+  }, [lunch]);
 
   return (
     <div>
@@ -346,7 +402,7 @@ let dinner = '- 타워함박스테이크\n\
         <a id="toLeft" className={styles.leftArrow}><Image src={LeftArrow} alt="" width={30} height={71}/></a>
         <a id="toRight" className={styles.rightArrow}><Image src={RightArrow} alt="" width={30} height={71}/></a>
       </div>
-      <Menu></Menu>
+      <Menu select="lunch"></Menu>
     </div>
   );
 }

@@ -11,23 +11,25 @@ import MealPlanLogo from '../../../public/assets/imgs/MealPlanLogo.svg'
 export default function Menu(props){
 
     useEffect(()=>{
-        
+        if( document.querySelector(`#${props.select}`)?.className ){
+            document.querySelector(`#${props.select}`).className += ` ${styles.selected}`
+        }
     },[])
 
     return (
         <div className={styles.wrapper}>
-            <div id="home" className={styles.home}>
+            <a href='/'><div id="home" className={styles.home}>
                 <Image src={HomeLogo} alt=''/>
-            </div>
-            <div id="timeTable" className={styles.timetable}>
+            </div></a>
+            <a href='/schedule'><div id="schedule" className={styles.timetable}>
                 <Image src={TimetableLogo} alt=''/>
-            </div>
-            <div id="calender" className={styles.calender}>
+            </div></a>
+            <a href='/calendar'><div id="Mcalendar" className={styles.calender}>
                 <Image src={CalenderLogo} alt=''/>
-            </div>
-            <div id="mealPlan" className={styles.mealPlan}>
+            </div></a>
+            <a href='/lunch'><div id="lunch" className={styles.mealPlan}>
                 <Image src={MealPlanLogo} alt=''/>
-            </div>
+            </div></a>
         </div>
     )
 }

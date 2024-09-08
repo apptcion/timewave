@@ -23,9 +23,10 @@ export default function Overlay(){
             </div>
 
             <div className={styles.button}>
-                <Image className={styles.SchoolLogo} src={SchoolLogo} alt='' />
-                <p className={styles.btn_msg}>학교 정보 등록하기</p>
-                <Image className={styles.SchoolArrowLogo} src={SchoolArrowLogo} alt=''/>
+                <div className={styles.left}>
+                    <Image className={styles.SchoolLogo} src={SchoolLogo} alt='' /><p className={styles.btn_msg}>학교 정보 등록하기</p>
+                </div>
+                    <Image className={styles.SchoolArrowLogo} src={SchoolArrowLogo} alt=''/>
             </div>
         </div>
     )

@@ -6,24 +6,44 @@
     height : 100vh;
 }
 
+.left{
+    width : 52.7vw;
+    height : 50.6vh;
+    position : absolute;
+    left : 3vw;
+    top : 24vh;
+    font-size : calc(7vw);
 
-
-.message{
-    position : relative;
-    top : 199px;
-    left : 220px;
 }
 
-.slogun{
-    
+.welcome{
     position : relative;
-    font-family: 'Pretendard-Regular';
-    font-size : 50px;
-    font-weight: bold;
-    width : 510px;
-    height : 120px;
-    top : 180px;
-    left :220px;
+    width : 100%;
+    height : 23.5%;
+    font-family: "Viga";
+    font-size : 65%;
+    font-weight: 800;
+    display : flex;
+    align-items: center;
+    left : 7%;
+    margin : 0px;
+    color : #3198BC;
+}
+
+/* .message{
+    width : 100%;
+    display : flex;
+    align-items: center;
+} */
+
+.slogun{
+    position : relative;
+    margin : 0px;
+    margin-top : 1.1%;
+    left : 7%;
+    width : 60.7%;
+    height : 26.8%;
+    font-size : 38%;
 }
 
 @font-face {
@@ -33,44 +53,61 @@
     font-style: normal;
 }
 
+.right{
+    width : 25vw;
+    height : 25vw;
+    position : absolute;
+    top : 25.3vh;
+    left :57.9vw;
+}
+
 .logo{
     position : relative;
-    top : -200px;
-    left : 995px;
+    width : 100%;
+    height : 100%;
+    z-index : 10;
     
 }
 
 .summary{
+    margin : 0px;
     position : relative;
-    width : 414px;
-    height : 76px;
-    font-size : 27px;
-    font-weight: 400;
+    left : 7%;
+    margin-top : 10px;
+    height : 17.9%;
+    width : 50.8%;
     font-style: normal;
+    font-size : 25%;
     color : #797979;
-    left : 220px;
-    top : 180px;
 }
 
 .downloads{
     position : relative;
     display : flex;
     justify-content: space-between;
-    top : -260px;
-    left : 220px;
-    width : 300px;
-    height : 45px;
+    margin-top : 5.5%;
+    left : 8.6%;
+    width : 33.5%;
+    height : 10%;
 }
 
 .download_Btn{
     padding : 10px;
     color : white;
     background-color : #414141;
-    width : 120px;
-    height : 25px;
+    width : 40%;
+    height : 40%;
     display : flex;
     align-items: center;
     justify-content: space-around;
-    border-radius : 10px;
+    border-radius: 0.5vw;
+    position : relative;
     box-shadow: 6.65px 6.65px 19.94px rgba(0,0,0,0.2);
+    font-size : 15%;
+}
+
+.appLogo{
+    width : 15%;
+    height : 120%;
+    margin-right : 5%;
 }

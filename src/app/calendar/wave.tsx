@@ -2,7 +2,7 @@
 import styles from '../../css/WAVE.module.css';
 import React, { useRef, useEffect, useState } from 'react';
 
-export default function WAVE() {
+export default function WAVE(props) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const XRef = useRef(0);
 
@@ -24,7 +24,7 @@ export default function WAVE() {
 
         const resizeHandler = () => {
             canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight-4;
+            canvas.height = window.innerHeight;
             cancelAnimationFrame(animationFrameId);
             draw(); // Resize 후에 새로 그리도록 호출
         };
@@ -33,9 +33,9 @@ export default function WAVE() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             
-            DrawWave(ctx, 3, 1, XRef.current, 'rgba(155,211,224,0.3)'); //노랑
-            DrawWave(ctx, 3, 2, XRef.current, 'rgba(166, 217, 226, 0.35'); // 빨강
-            DrawWave(ctx, 3, 3, XRef.current, 'rgba(195, 229, 234, 0.2)'); // 파랑
+            DrawWave(ctx, 3, 1, XRef.current, 'rgba(155,211,224,0.3)'); 
+            DrawWave(ctx, 3, 2, XRef.current, 'rgba(166, 217, 226, 0.35'); 
+            DrawWave(ctx, 3, 3, XRef.current, 'rgba(195, 229, 234, 0.2)'); 
             XRef.current += speed;
 
             animationFrameId = requestAnimationFrame(draw);
@@ -75,11 +75,11 @@ export default function WAVE() {
         ctx.fillStyle = color;
         
         ctx.beginPath()
-        ctx.lineTo(0, window.innerHeight/2 + 300 + unique*30)
+        ctx.lineTo(0, window.innerHeight/props.height + 300 + unique*30)
     
         for (let i = window.innerWidth/((points-1)*2); i < window.innerWidth; i += window.innerWidth / (points-1)) {
             let index = (i- window.innerWidth/((points-1)*2))/(window.innerWidth/(points-1)) + 1
-            ctx.quadraticCurveTo(i , Math.sin(calcRadian(X + index*90 + unique*diff))*(height) +  window.innerHeight/2 + 360 , i + window.innerWidth/((points-1)*2),  (Math.sin(calcRadian(X + index*90 + unique*diff))*(height) + Math.sin(calcRadian(X + (index+ 1)*90  + unique*diff))*(height))/2 + window.innerHeight/2 + 360)
+            ctx.quadraticCurveTo(i , Math.sin(calcRadian(X + index*90 + unique*diff))*(height) +  window.innerHeight/props.height + 360 , i + window.innerWidth/((points-1)*2),  (Math.sin(calcRadian(X + index*90 + unique*diff))*(height) + Math.sin(calcRadian(X + (index+ 1)*90  + unique*diff))*(height))/2 + window.innerHeight/props.height + 360)
             
         }
         ctx.lineTo(window.innerWidth, window.innerHeight/2 )
@@ -91,11 +91,10 @@ export default function WAVE() {
     }
 
     return (
-        <div>
         <canvas
             className={styles.canvas}
             ref={canvasRef}
-        /></div>
+        />
     );
 }
 

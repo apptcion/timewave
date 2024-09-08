@@ -12,17 +12,17 @@
     width : 100vw;
     height : 100vh;
     background-color: rgba(0,0,0,0.7);
-    z-index : 10;
+    z-index : 11;
 }
 
 .message{
     font-family: 'Pretendard-Regular';
     position : relative;
-    top : 320px;
-    left : 293px;
-    width : 1080px;
-    height : 108px;
-    font-size : 45px;
+    top : 38.9%;
+    left : 28.5%;
+    width : 43%;
+    height : 8vh;
+    font-size : 2.05vw;
     color : white;
     display : flex;
     justify-content: center;
@@ -33,20 +33,6 @@
     margin : 0px;
 }
 
-.button{
-    font-family: 'Pretendard-Regular';
-    padding : 20px 40px;
-    overflow: hidden;
-    border-radius : 24px;
-    width : 440px;
-    height : 60px;
-    background-color: white;
-    position : relative;
-    top : 55vh;
-    margin : 0 auto;
-    justify-content: space-around;
-}
-
 .button:hover{
     animation: focusInAnime;
     animation-duration: 0.2s;
@@ -54,27 +40,59 @@
 }
 @keyframes focusInAnime {
     0%{
-        width : 440px;
+        width : calc(23.4vw - 62px)
     }
     100%{
-        width : 530px;
+        width : calc(26vw - 62px);
     }
 }
+
+
+.button{
+    font-family: 'Pretendard-Regular';
+    padding : 12px 31px;
+    overflow: hidden;
+    border-radius : 20px;
+    width : calc(23.4vw - 62px);
+    justify-content: space-between;
+    height : calc(7vh - 24px);
+    background-color: white;
+    position : relative;
+    top : 46%;
+    margin : 0 auto;
+    display : flex;
+    cursor : pointer;
+}
+
+.left{
+    display : flex;
+    width : calc( (23.4vw - 62px)  );
+    height : 100%;
+    justify-content: space-evenly;
+}
+
+
+.SchoolLogo{
+    height : 100%;
+    width : 15%;
+}
+
 
 .btn_msg{
     margin : 0px;
-    font-size : 48px;
-    height : 54px;
+    font-size : 1.7vw;
+    height : 100%;
+    width: 70%;
     display : flex;
+    justify-content: center;
     align-items: center;
-    width: fit-content;
     position: relative;
-    top : -65px;
-    left : 83px;
 }
 
 .SchoolArrowLogo{
-    position : relative;
-    top : -119px;
-    left : 480px;
+    position : absolute;
+    top : 2vh;
+    left : 23.4vw;
+    height : 3vh;
+    width : 3vh;
 }

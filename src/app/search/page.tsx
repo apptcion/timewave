@@ -84,7 +84,8 @@ export default function Search(){
                         let Info = {
                             locate : Data.LCTN_SC_NM,
                             name  : Data.SCHUL_NM,
-                            code : Data.SD_SCHUL_CODE
+                            SC_code : Data.SD_SCHUL_CODE,
+                            OFE_code : Data.ATPT_OFCDC_SC_CODE
                         }
                         result.push(Info)
                     })
@@ -106,8 +107,9 @@ export default function Search(){
                         tdName.innerHTML = Info.name
 
                         function setSchool(){
-                            document.cookie = `school=${Info.code}; path=/;`;
-                            location.href='/lunch'
+                            document.cookie = `SC_CODE=${Info.SC_code}; path=/`;
+                            document.cookie = `OFE_CODE=${Info.OFE_code}; path=/`;
+                            location.href = '/lunch'
                         }
 
                         tr.appendChild(tdLocate)

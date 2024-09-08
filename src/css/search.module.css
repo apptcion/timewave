@@ -1,98 +1,99 @@
 .main{
-    width : 691px;
-    height : fit-content;
-    position : relative;
-    top : 162px;
-    margin : 0 auto;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    position : absolute;
+    top : 0px;
+    left : 0px;
+    width : 100vw;
+    height : 100vh;
+    overflow-x : hidden;
 }
 
 .imgWrap{
-    height : fit-content;
+    width : 24vw;
+    height : 22vh;
+    display : flex;
+    justify-content: center;
+    position : relative;
+    left : calc(50vw - 12vw);
+    top : 18.9vh;
 }
 
+
 .Wrap{
-    margin-top : 100px;
-    margin-bottom : 100px;
+    width : 45.3vw;
+    height : fit-content;
+    margin-top : 6vh;
+    margin-bottom : 30vh;
+    position : relative;
+    left : calc(50vw - (45.3vw/2));
+    top : 18.9vh;
 }
 
 .searchWrap{
-    width : 689px;
-    height : 52px;
+    width : calc(100% - 8px);
+    height : 4.9vh;
     display : flex;
-    flex-wrap: wrap;
+    border : solid 4px #91D0E5;
+    border-radius : 10px;
+
 }
 
 .input{
-    width : 615px;
-    height : 42px;
-    border : solid 4px #91D0E5;
+    border : none;
+    width : calc(90% - 20px);
+    padding-left : 16px;
+    border-right : solid 4px #91D0E5;
+    border-bottom-left-radius : 10px;
     border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding : none;
-    font-size : 20px;
-    padding-left : 15px;
+    font-size : 2vh;
+}
+
+.input::placeholder{
+    color : #19738F;
 }
 
 .input:focus{
     outline: none;
 }
 
-.input::placeholder{
-    font-size : 20px;
-    color : #19738F;
-    position : relative;
-    left : 0px;
-    top : 2.5px;
-    font-family: "Inter", sans-serif;
-    font-size : 20px;
-}
-
 .searchBtn{
-    width : 45px;
-    height : 44px;
-    border : solid 4px #91D0E5;
-    border-left : none;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    width : calc(10%);
     display : flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;;
 }
 
 .list{
     position : relative;
-    top : 40px;
-    width : 685px;
-    height : fit-content;
-    min-height: 100px;
-    border : solid 4px #8FD1E7;
+    width : calc(100% - 8px);
+    margin-top : calc(4.67vh - 8px);
+    border : solid 4px #91D0E5;
     border-radius: 14px;
+    height: auto;
+    margin-bottom : 20vh;
 }
 
 .header{
-    height : 43px;
+    width : 100%;
+    height : 4.79vh;
     border-bottom : solid 4px #8FD1E7;
     display : flex;
     flex-wrap : wrap;
 }
 
 .locate{
-    width : 204px;
+    width : calc(100% * 0.3 - 2px);
     height : 100%;
     display : flex;
     justify-content: center;
     align-items: center;
     color : #19738F;
     font-family: "Inter", sans-serif;
-    font-size : 20px;
+    font-size : 1.4vw;
     border-right : solid 2.5px #8FD1E7;
 }
 
 .schoolname{
-    width : 477px;
+    width : calc(100% * 0.6981 - 2px);
     height : 100%;
     display : flex;
     justify-content: center;
@@ -105,15 +106,16 @@
 }
 
 .body{
-    width : 685px;
+    width : 100%;
     background-color: rgba(135,218,239,0.05);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    min-height : 4.79vh;
 }
 
 .tr{
-    width : 685px;
-    height : 48px;
+    width : 100%;
+    height : 4.79vh;
     border-bottom : solid 1px #8FD1E7;
     display : flex;
     flex-wrap : wrap;
@@ -121,7 +123,7 @@
 }
 
 .tdLocate{
-    width : 204px;
+    width : calc(100% * 0.3 - 2px);
     height : 100%;
     border-right : solid 2.5px #8FD1E7;
     display : flex;
@@ -135,7 +137,7 @@
 }
 
 .tdName{
-    width : 477px;
+    width : calc(100% * 0.6981 - 2px);
     height : 100%;
     display : flex;
     justify-content: center;

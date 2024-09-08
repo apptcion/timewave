@@ -1,17 +1,18 @@
 .wrapper{
     position : absolute;
-    top : calc(50vh - 212.5px);
-    left : 89.5vw;
-    width : 75px;
-    height : 425px;
+    top : calc(25vh);
+    left : calc(90vw);
+    width : 4.9vw;
+    height : 50vh;
     display : flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    z-index : 10;
 }
 
 .home{
-    width : 75px;
-    height : 75px;
+    width : 4.9vw;
+    height : 4.9vw;
     border-radius: 100%;
     background-color: #DFEDF8;
     display : flex;
@@ -20,8 +21,8 @@
 }
 
 .timetable{
-    width : 75px;
-    height : 75px;
+    width : 4.9vw;
+    height : 4.9vw;
     border-radius: 100%;
     background-color: #DFEDF8;
     display : flex;
@@ -30,8 +31,8 @@
 }
 
 .calender{
-    width : 75px;
-    height : 75px;
+    width : 4.9vw;
+    height : 4.9vw;
     border-radius: 100%;
     background-color: #DFEDF8;
     display : flex;
@@ -40,8 +41,8 @@
 }
 
 .mealPlan{
-    width : 75px;
-    height : 75px;
+    width : 4.9vw;
+    height : 4.9vw;
     border-radius: 100%;
     background-color: #DFEDF8;
     display : flex;
