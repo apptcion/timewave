@@ -134,9 +134,6 @@ function createDate(Start:Date, DomElement:HTMLDivElement){
 
 export default function Calendar(){
 
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`)
-
     const [showDate, setShowDate] = useState(new Date())
     async function createWeeks(){
         const nowDate = new Date(showDate)
