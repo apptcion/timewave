@@ -9,8 +9,7 @@
     justify-content: space-between;
     z-index : 10;
 }
-
-.home{
+.timetable, .calendar, .mealPlan, .home{
     width : 4.9vw;
     height : 4.9vw;
     border-radius: 100%;
@@ -20,34 +19,9 @@
     align-items: center;
 }
 
-.timetable{
-    width : 4.9vw;
-    height : 4.9vw;
-    border-radius: 100%;
-    background-color: #DFEDF8;
-    display : flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.calender{
-    width : 4.9vw;
-    height : 4.9vw;
-    border-radius: 100%;
-    background-color: #DFEDF8;
-    display : flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mealPlan{
-    width : 4.9vw;
-    height : 4.9vw;
-    border-radius: 100%;
-    background-color: #DFEDF8;
-    display : flex;
-    justify-content: center;
-    align-items: center;
+.Logos{
+    width : 2vw;
+    height : 2vw;
 }
 
 .selected{

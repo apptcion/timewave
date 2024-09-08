@@ -19,16 +19,16 @@ export default function Menu(props){
     return (
         <div className={styles.wrapper}>
             <a href='/'><div id="home" className={styles.home}>
-                <Image src={HomeLogo} alt=''/>
+                <Image className={styles.Logos} src={HomeLogo} alt=''/>
             </div></a>
             <a href='/schedule'><div id="schedule" className={styles.timetable}>
-                <Image src={TimetableLogo} alt=''/>
+                <Image className={styles.Logos} src={TimetableLogo} alt=''/>
             </div></a>
-            <a href='/calendar'><div id="Mcalendar" className={styles.calender}>
-                <Image src={CalenderLogo} alt=''/>
+            <a href='/calendar'><div id="Mcalendar" className={styles.calendar}>
+                <Image className={styles.Logos} src={CalenderLogo} alt=''/>
             </div></a>
             <a href='/lunch'><div id="lunch" className={styles.mealPlan}>
-                <Image src={MealPlanLogo} alt=''/>
+                <Image className={styles.Logos} src={MealPlanLogo} alt=''/>
             </div></a>
         </div>
     )

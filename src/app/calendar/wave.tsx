@@ -7,7 +7,7 @@ export default function WAVE(props) {
     const XRef = useRef(0);
 
     const [speed, setSpeed] = useState(1)
-    const [height, setHeight] = useState(80)
+    const [height, setHeight] = useState(50)
     const [diff, setDiff] = useState(120)
 
     useEffect(() => {
