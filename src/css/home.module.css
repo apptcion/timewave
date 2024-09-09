@@ -86,7 +86,7 @@
     display : flex;
     justify-content: space-between;
     margin-top : 5.5%;
-    left : 8.6%;
+    left : 7%;
     width : 33.5%;
     height : 10%;
 }
@@ -96,7 +96,7 @@
     color : white;
     background-color : #414141;
     width : 40%;
-    height : 40%;
+    height : 50%;
     display : flex;
     align-items: center;
     justify-content: space-around;
@@ -108,6 +108,6 @@
 
 .appLogo{
     width : 15%;
-    height : 120%;
+    height : 100%;
     margin-right : 5%;
 }

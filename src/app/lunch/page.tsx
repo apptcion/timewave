@@ -44,7 +44,6 @@ function createRoundedBoxGeometry(width, height, radius) {
 }
 
 function Radian(angle){
-  console.log(angle)
   return angle * (Math.PI/180);
 }
 
@@ -72,14 +71,12 @@ function create2dText(message, fontPath, size, position, scene, onLoadCallBack =
 }
 
 function getCookie(name) {
-  console.log(name)
   let cookies = document.cookie;
   let parseCookie = {}
   cookies.split(';').forEach((keyValue)=>{
     let temp = keyValue.split('=');
     parseCookie[temp[0].trim()] = temp[1]
   })
-  console.log(parseCookie)
 
   return parseCookie[name]
 }
@@ -94,14 +91,14 @@ export default function Lunch() {
   const [lunch, setLunch] = useState('데이터가 없습니다.')
   const [dinner, setDinner] = useState('데이터가 없습니다.')
 
+  let time = 2;
+
   async function setMealInfo(){
     if(!getCookie('SC_CODE')){
       setEnroll(true)
     }else{
       let SC_code = getCookie('SC_CODE')
       let OFE_code = getCookie('OFE_CODE')
-
-      console.log(SC_code, OFE_code)
       let date = new Date().toISOString().slice(0,10).replace(/-/g,"")
       await fetch(
         `https://open.neis.go.kr/hub/mealServiceDietInfo?Type=json&ATPT_OFCDC_SC_CODE=${OFE_code}&SD_SCHUL_CODE=${SC_code}&MLSV_YMD=${date}&KEY=${process.env.NEXT_PUBLIC_apiKEY}`
@@ -175,7 +172,7 @@ let dinner = '- 타워함박스테이크\n\
     // Three.js 기본 요소 설정
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      105,
+      110,
       currentRef.clientWidth / currentRef.clientHeight,
       0.1,
       1000
@@ -193,11 +190,6 @@ let dinner = '- 타워함박스테이크\n\
     BoardSpace.position.y = 0;
     scene.add(BoardSpace)
 
-    // const tempCircleGeo = new THREE.CircleGeometry(3)
-    // const tempCircleMaterial = new THREE.MeshBasicMaterial({color : 'red'})
-    // const tempCircle = new THREE.Mesh(tempCircleGeo, tempCircleMaterial)
-    // tempCircle.rotation.x = Radian(-90);
-
     //scene.add(tempCircle)
 
     //아침 메뉴판 공간 생성
@@ -214,8 +206,8 @@ let dinner = '- 타워함박스테이크\n\
     MorningSpace.add(morningBoard)
 
     //아침 텍스트 추가
-    create2dText('아침', '/assets/fonts/Pretendard Medium_Regular.json', 0.2, [-1.2, 1.7, 0.1], MorningSpace)
-    create2dText(morning, '/assets/fonts/Pretendard Medium_Regular.json', 0.13, [-1.2, 1.3, 0.1], MorningSpace)
+    create2dText('아침', '/assets/fonts/Pretendard Medium_Regular.json', 0.2, [-1.2, 1.7, 0.001], MorningSpace)
+    create2dText(morning, '/assets/fonts/Pretendard Medium_Regular.json', 0.13, [-1.2, 1.3, 0.001], MorningSpace)
 
     BoardSpace.add(MorningSpace)
     Showing.push(MorningSpace)
@@ -226,15 +218,15 @@ let dinner = '- 타워함박스테이크\n\
 
     //점심 보드 추가
     const lunchBoardGeometry = createRoundedBoxGeometry(3,9/2,0.1)
-    const lunchBoardMaterial = new THREE.MeshBasicMaterial({color: '#D8EBFC', side: THREE.DoubleSide, transparent: true, opacity: 0.5})
+    const lunchBoardMaterial = new THREE.MeshBasicMaterial({color: '#B9DFEC', side: THREE.DoubleSide, transparent: true, opacity: 0.5})
     const lunchBoard = new THREE.Mesh(lunchBoardGeometry, lunchBoardMaterial);
 
     LunchSpace.add(lunchBoard)
     Showing.push(LunchSpace)
 
     //점심 텍스트 추가
-    create2dText('점심', '/assets/fonts/Pretendard Medium_Regular.json', 0.2, [-1.2, 1.7, 0.1], LunchSpace)
-    create2dText(lunch, '/assets/fonts/Pretendard Medium_Regular.json', 0.13, [-1.2, 1.3, 0.1], LunchSpace)
+    create2dText('점심', '/assets/fonts/Pretendard Medium_Regular.json', 0.2, [-1.2, 1.7, 0.001], LunchSpace)
+    create2dText(lunch, '/assets/fonts/Pretendard Medium_Regular.json', 0.13, [-1.2, 1.3, 0.001], LunchSpace)
 
     BoardSpace.add(LunchSpace)
 
@@ -252,10 +244,9 @@ let dinner = '- 타워함박스테이크\n\
 
 
     //저녁 텍스트 추가
-    create2dText('저녁', '/assets/fonts/Pretendard Medium_Regular.json', 0.2, [-1.2, 1.7, 0.1], DinnerSpace)
-    create2dText(dinner, '/assets/fonts/Pretendard Medium_Regular.json', 0.13, [-1.2, 1.3, 0.1], DinnerSpace, () => {
+    create2dText('저녁', '/assets/fonts/Pretendard Medium_Regular.json', 0.2, [-1.2, 1.7, 0.001], DinnerSpace)
+    create2dText(dinner, '/assets/fonts/Pretendard Medium_Regular.json', 0.13, [-1.2, 1.3, 0.001], DinnerSpace, () => {
       setLoading(false)
-      console.log("로딩 완료")
     })
 
     BoardSpace.add(DinnerSpace)
@@ -268,9 +259,9 @@ let dinner = '- 타워함박스테이크\n\
     // scene.add(axesHelper);
 
     // 카메라 위치 설정
-    camera.position.z = 4.4;
+    camera.position.z = 3;
     const controls = new OrbitControls(camera, renderer.domElement)
-    controls.minDistance = 3;
+    controls.minDistance = 2;
     controls.maxDistance = 5;
     controls.maxPolarAngle = Radian(180)
     controls.maxAzimuthAngle = Radian(90)
@@ -290,12 +281,15 @@ let dinner = '- 타워함박스테이크\n\
 
       controls.update()
       renderer.render(scene, camera);
+      
     };
 
     animate();
 
-    function toLeft(){
+    function toRight(){
       running = true
+      time += 1
+      if(time >= 4) time = 1;
       //왼 : -7/2, 0, -0.5
       //가 :    0, 0,    1
       //오 :  7/2, 0, -0.5
@@ -328,12 +322,19 @@ let dinner = '- 타워함박스테이크\n\
       running = false
       let tempShowing  = [Showing[1], Showing[2], Showing[0]]
       Showing = tempShowing
+      
+      Showing[0].children[0].material.color.set(0xD8EBFC)
+      Showing[1].children[0].material.color.set(0xB9DFEC) // 강조
+      Showing[2].children[0].material.color.set(0xD8EBFC)
+      
       },200)
 
     }
 
-    function toRight(){
+    function toLeft(){
       running = true
+      time -= 1;
+      if(time  <= 0) time = 3;
       //왼 : -7/2, 0, -0.5
       //가 :    0, 0,    1
       //오 :  7/2, 0, -0.5
@@ -364,7 +365,12 @@ let dinner = '- 타워함박스테이크\n\
         clearInterval(timer1)
         running = false
       let tempShowing  = [Showing[2], Showing[0], Showing[1]]
-      Showing = tempShowing
+      Showing = tempShowing;
+
+      Showing[0].children[0].material.color.set(0xD8EBFC)
+      Showing[1].children[0].material.color.set(0xB9DFEC) // 강조
+      Showing[2].children[0].material.color.set(0xD8EBFC)
+
       },200)
 
     }
